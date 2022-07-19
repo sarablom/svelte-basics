@@ -1,8 +1,26 @@
 <script>
-    export let userName;
-    export let jobTitle;
-    export let description;
+  export let userName;
+  export let jobTitle;
+  export let description;
+  export let userImage;
 </script>
+
+<div class="contact-card">
+  <header>
+    <!-- <div class={userImage ? " thumb" : "thumb thumb-placeholder"}> -->
+    <div class="thumb" class:thumb-placeholder={!userImage}>
+      <img src={userImage} alt={userName} />
+    </div>
+    <div class="user-data">
+      <h1>{userName}</h1>
+      <h2>{jobTitle}</h2>
+    </div>
+  </header>
+  <div class="description">
+    <p>{description}</p>
+    <!-- <p>{@html description}</p> -->
+  </div>
+</div>
 
 <style>
   .contact-card {
@@ -22,6 +40,10 @@
   .thumb {
     width: 33%;
     height: 100%;
+  }
+
+  .thumb-placeholder {
+    background: #ccc;
   }
 
   img {
@@ -56,18 +78,3 @@
     padding: 1rem;
   }
 </style>
-
-<div class="contact-card">
-  <header>
-    <div class="thumb">
-      <img src="" alt="" />
-    </div>
-    <div class="user-data">
-      <h1>{userName}</h1>
-      <h2>{jobTitle}</h2>
-    </div>
-  </header>
-  <div class="description">
-    <p>{description}</p>
-  </div>
-</div>

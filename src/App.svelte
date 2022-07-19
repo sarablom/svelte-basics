@@ -5,6 +5,7 @@
   let jobTitle = "Web Developer";
   let description = "I am a web developer";
   let age = 30;
+  let userImage;
 
   // let uppercaseName; not required!
 
@@ -39,7 +40,7 @@
 <input type="text" bind:value={jobTitle} />
 <input type="text" bind:value={description} />
 
-<ContactCard userName={name} {jobTitle} {description} />
+<ContactCard userName={name} {jobTitle} {description} {userImage} />
 
 <style>
   h1 {
