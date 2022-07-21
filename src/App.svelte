@@ -5,7 +5,7 @@
   let jobTitle = "Web Developer";
   let description = "I am a web developer";
   let age = 30;
-  let userImage = "hej.jpg";
+  let userImage = "http://placekitten.com/200/300";
   let formState = "empty";
   let createdContacts = [];
 
@@ -77,18 +77,22 @@
 <button on:click={addContact}>Add contact card</button>
 
 {#if formState === "invalid"}
-  <p>Please fill out all fields</p>
+  <p>Invalid data input</p>
 {:else}
-  <p>Please enter some data and press the button</p>
+  <p />
 {/if}
 
-{#each createdContacts as contact}
+{#each createdContacts as contact, index}
+  <h2>#{index + 1}</h2>
   <ContactCard
     userName={contact.name}
     jobTitle={contact.jobTitle}
     description={contact.description}
     userImage={contact.userImage}
   />
+  <!-- If the array is empty show this instead -->
+{:else}
+  <p>Please enter some data and press the button</p>
 {/each}
 
 <style>
