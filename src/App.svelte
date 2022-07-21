@@ -21,7 +21,7 @@
     }
     createdContacts = [
       ...createdContacts,
-      { name, jobTitle, description, userImage },
+      { id: Math.random(), name, jobTitle, description, userImage },
     ];
     formState = "done";
   }
@@ -82,7 +82,7 @@
   <p />
 {/if}
 
-{#each createdContacts as contact, index}
+{#each createdContacts as contact, index (contact.id)}
   <h2>#{index + 1}</h2>
   <ContactCard
     userName={contact.name}
