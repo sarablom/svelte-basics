@@ -5,8 +5,9 @@
   let jobTitle = "Web Developer";
   let description = "I am a web developer";
   let age = 30;
-  let userImage;
+  let userImage = "hej.jpg";
   let formState = "empty";
+  let createdContacts = [];
 
   function addContact() {
     if (
@@ -18,7 +19,10 @@
       formState = "invalid";
       return;
     }
-    console.log(formState);
+    createdContacts = [
+      ...createdContacts,
+      { name, jobTitle, description, userImage },
+    ];
     formState = "done";
   }
 
@@ -72,13 +76,20 @@
 
 <button on:click={addContact}>Add contact card</button>
 
-{#if formState === "done"}
-  <ContactCard userName={name} {jobTitle} {description} {userImage} />
-{:else if formState === "invalid"}
+{#if formState === "invalid"}
   <p>Please fill out all fields</p>
 {:else}
   <p>Please enter some data and press the button</p>
 {/if}
+
+{#each createdContacts as contact}
+  <ContactCard
+    userName={contact.name}
+    jobTitle={contact.jobTitle}
+    description={contact.description}
+    userImage={contact.userImage}
+  />
+{/each}
 
 <style>
   h1 {
