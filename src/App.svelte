@@ -74,7 +74,13 @@
   </div>
 </div>
 
-<button on:click={addContact}>Add contact card</button>
+<!-- modifier: only works one -->
+<button on:click|once={addContact}>Add contact card</button>
+<!-- modifier: stops the event propogation -->
+<button on:click|stopPropagation={addContact}>Add contact card</button>
+<!-- modifier: prevent default, useful in forms to not reload the page -->
+<button on:click|preventDefault={addContact}>Add contact card</button>
+
 
 {#if formState === "invalid"}
   <p>Invalid data input</p>
